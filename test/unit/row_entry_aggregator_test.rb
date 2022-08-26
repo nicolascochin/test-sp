@@ -53,4 +53,16 @@ class RowEntryAggregatorTest < AbstractTest
       @aggregator.data
     )
   end
+
+  def test_two_different_rows_entries_are_added
+    @aggregator.add_row_entry(@row_entry)
+    @aggregator.add_row_entry(RowEntry.new(endpoint: 'another_endpoint', ip: 'another_ip'))
+    assert_equal(
+      {
+        'an_endpoint' => %w[an_ip],
+        'another_endpoint' => %w[another_ip]
+      },
+      @aggregator.data
+    )
+  end
 end
