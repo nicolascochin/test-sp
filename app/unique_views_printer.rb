@@ -6,11 +6,11 @@ class UniqueViewsPrinter
   class << self
     def call(aggregator)
       puts 'Unique views:'
-      if aggregator.nil?
+      if aggregator.nil? || aggregator.data.empty?
         puts 'no data'
         return
       end
-      print_sorted_data(aggregator)
+      print_sorted_data(aggregator.data)
     end
 
     private

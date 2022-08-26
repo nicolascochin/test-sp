@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'row_entry'
+
 class RowEntryBuilder
   def self.call(raw_string)
     return nil if raw_string.nil? || raw_string.empty?
