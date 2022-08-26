@@ -11,4 +11,8 @@ class RowEntryBuilderTest < AbstractTest
   def test_a_nil_entry_returns_nil
     assert_nil RowEntryBuilder.call(nil)
   end
+
+  def test_an_invalid_string_returns_nil
+    assert_nil RowEntryBuilder.call('invalid_input_ip_is_missing')
+  end
 end
