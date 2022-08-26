@@ -14,6 +14,20 @@ class RowEntryAggregatorTest < AbstractTest
     assert_equal({}, @aggregator.data)
   end
 
+  def test_a_nil_row_entry_is_added_is_skipped
+    @aggregator.add_row_entry(nil)
+    assert_equal({}, @aggregator.data)
+  end
+
+  def test_a_nil_row_entry_is_added_is_skipped_even_when_aggregator_is_not_empty
+    @aggregator.add_row_entry(@row_entry)
+    @aggregator.add_row_entry(nil)
+    assert_equal(
+      { 'an_endpoint' => ['an_ip'] },
+      @aggregator.data
+    )
+  end
+
   def test_a_row_entry_is_added
     @aggregator.add_row_entry(@row_entry)
     assert_equal(
