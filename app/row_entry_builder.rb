@@ -7,7 +7,11 @@ class RowEntryBuilder
     raw_string
       .split
       .then do |row_array|
-        row_array.size == 2 ? RowEntry.new(endpoint: row_array[0], ip: row_array[1]) : nil
+        if row_array.size != 2
+          warn 'Invalid entry, skipping the row'
+          return nil
+        end
+        RowEntry.new(endpoint: row_array[0], ip: row_array[1])
       end
   end
 end
