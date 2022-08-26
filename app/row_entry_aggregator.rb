@@ -8,6 +8,8 @@ class RowEntryAggregator
   end
 
   def add_row_entry(row_entry)
+    return if row_entry.nil?
+
     @data[row_entry.endpoint] << row_entry.ip
   end
 end
