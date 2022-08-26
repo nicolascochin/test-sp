@@ -9,8 +9,31 @@ class UniqueViewsPrinterTest < AbstractTest
       Unique views:
       no data
     NO_RESULT
-    out, err = capture_io { UniqueViewsPrinter.call(nil) }
+    capture_output(nil, expected)
+  end
+
+  def test_print_endpoints_with_unique_views_count_sorted_desc # rubocop:disable Metrics/MethodLength
+    aggregator = {
+      'dummy_endpoint' => ['third_ip'],
+      'another_endpoint' => %w[first_ip second_ip second_ip second_ip],
+      'an_endpoint' => %w[first_ip second_ip first_ip third_ip]
+    }
+
+    expected = <<~NO_RESULT
+      Unique views:
+      an_endpoint 3 unique views
+      another_endpoint 2 unique views
+      dummy_endpoint 1 unique views
+    NO_RESULT
+
+    capture_output(aggregator, expected)
+  end
+
+  private
+
+  def capture_output(data, expected, error = '')
+    out, err = capture_io { UniqueViewsPrinter.call(data) }
     assert_equal expected, out
-    assert_equal '', err
+    assert_equal error, err
   end
 end
