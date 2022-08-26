@@ -22,6 +22,9 @@ class RowEntryBuilderTest < AbstractTest
   end
 
   def test_a_valid_string_returns_a_row_entry
-    assert_instance_of RowEntry, RowEntryBuilder.call(@valid_input)
+    assert_equal(
+      RowEntry.new(endpoint: 'an_endpoint', ip: 'an_ip'),
+      RowEntryBuilder.call(@valid_input)
+    )
   end
 end
