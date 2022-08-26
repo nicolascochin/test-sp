@@ -1,8 +1,5 @@
+# frozen_string_literal: true
+
 class Parser
-
-  def initialize(filename)
-  end
-
-  def call
-  end
+  def call; end
 end

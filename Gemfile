@@ -1,6 +1,8 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem "rake"
+source 'https://rubygems.org'
+
+gem 'rake'
 
 group :development, :test do
   gem 'rubocop', require: false
@@ -8,5 +10,5 @@ group :development, :test do
 end
 
 group :test do
-  gem "minitest"
+  gem 'minitest'
 end
