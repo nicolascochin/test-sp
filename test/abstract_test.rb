@@ -8,5 +8,7 @@ TEST_PATH = "#{ROOT_PATH}/test".freeze
 FIXTURES_PATH = "#{TEST_PATH}/fixtures".freeze
 EXPECTATIONS_PATH = "#{TEST_PATH}/expectations".freeze
 
+AggregatorStub = Struct.new(:data)
+
 class AbstractTest < Minitest::Test
 end
