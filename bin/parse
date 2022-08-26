@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require_relative '../app/parser'
+
+file = ARGV[0]
+
+def usage
+  warn "Usage: #{File.basename(__FILE__)} filename"
+end
+
+if file.nil? || file.empty?
+  warn 'Missing log file'
+  usage
+  exit(1)
+end
+
+unless File.exist?(file)
+  warn "File #{file} does not exists"
+  usage
+  exit(2)
+end
+
+unless File.file?(file)
+  warn "File #{file} is not a file"
+  usage
+  exit(3)
+end
+
+Parser.new(ARGV[0]).call
