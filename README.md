@@ -1,6 +1,9 @@
 # Install
 Install required dependencies with bundle: `bundle install`
 
+
+# Rubocop
+Rubocop is installed. Run `bundle exec rubocop` to run an analysis
 # Tests
 All tests can be run with the following command: `bundle exec rake test`
 
